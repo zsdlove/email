@@ -1,4 +1,5 @@
-email
+this is a test project mainly for recording my practical experience in unionpay in china.（主要就是对我在银联实习期间做得一个项目的记录，各位大师傅不要见笑）
+test page:http://webmail.unionpay.com
 =====
 
 [![Build Status](https://travis-ci.org/jordan-wright/email.png?branch=master)](https://travis-ci.org/jordan-wright/email) [![GoDoc](https://godoc.org/github.com/jordan-wright/email?status.svg)](https://godoc.org/github.com/jordan-wright/email)
@@ -28,22 +29,22 @@ The ```email``` package currently supports the following:
 #### Sending email using Gmail
 ```go
 e := email.NewEmail()
-e.From = "Jordan Wright <test@gmail.com>"
-e.To = []string{"test@example.com"}
-e.Bcc = []string{"test_bcc@example.com"}
-e.Cc = []string{"test_cc@example.com"}
+e.From = "Jordan Wright <test@unionpay.com>"
+e.To = []string{"test@unionpay.com"}
+e.Bcc = []string{"test_bcc@unionpay.com"}
+e.Cc = []string{"test_cc@unionpay.com"}
 e.Subject = "Awesome Subject"
 e.Text = []byte("Text Body is, of course, supported!")
 e.HTML = []byte("<h1>Fancy HTML is supported, too!</h1>")
-e.Send("smtp.gmail.com:587", smtp.PlainAuth("", "test@gmail.com", "password123", "smtp.gmail.com"))
+e.Send("webmail.unionpay.com", smtp.PlainAuth("", "test@unionpay.com", "unionpay123!", "webmail.unionpay.com"))
 ```
 
 #### Another Method for Creating an Email
 You can also create an email directly by creating a struct as follows:
 ```go
 e := &email.Email {
-	To: []string{"test@example.com"},
-	From: "Jordan Wright <test@gmail.com>",
+	To: []string{"test@unionpay.com"},
+	From: "Jordan Wright <test@unionpay.com>",
 	Subject: "Awesome Subject",
 	Text: []byte("Text Body is, of course, supported!"),
 	HTML: []byte("<h1>Fancy HTML is supported, too!</h1>"),
@@ -64,9 +65,9 @@ e.AttachFile("test.txt")
 ```go
 (var ch <-chan *email.Email)
 p := email.NewPool(
-	"smtp.gmail.com:587",
+	"webmail.unionpay.com",
 	4,
-	smtp.PlainAuth("", "test@gmail.com", "password123", "smtp.gmail.com"),
+	smtp.PlainAuth("", "test@unionpay", "unionpay123!", "webmail.unionpay.com"),
 )
 for i := 0; i < 4; i++ {
 	go func() {
